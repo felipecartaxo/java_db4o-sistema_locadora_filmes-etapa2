@@ -29,4 +29,24 @@ public class DAOGenero extends DAO<Genero> {
 		
 		return q.getResultList();
 	}
+	
+	// ---------- Consultas ----------
+
+	// Quais os gêneros que têm um nome específico (opcional)
+	public List<Genero> generosPorNome(String nome) {
+	    TypedQuery<Genero> q = manager.createQuery(
+	        "SELECT g FROM Genero g WHERE g.nome = :nome", Genero.class);
+	    q.setParameter("nome", nome);
+	    
+	    return q.getResultList();
+	}
+
+	// Quais os gêneros que têm mais de N vídeos (requisito)
+	public List<Genero> generosComMaisVideos(int valor) {
+	    TypedQuery<Genero> q = manager.createQuery(
+	        "SELECT g FROM Genero g WHERE SIZE(g.videos) > :valor", Genero.class);
+	    q.setParameter("valor", valor);
+	    
+	    return q.getResultList();
+	}
 }

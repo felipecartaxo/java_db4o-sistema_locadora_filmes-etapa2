@@ -29,4 +29,43 @@ public class DAOVideo extends DAO<Video> {
 		
 		return q.getResultList();
 	}
+	
+	// ---------- Consultas ----------
+
+	// Quais os vídeos de classificação X (requisito)
+	public List<Video> videosPorClassificacao(int valor) {
+	    TypedQuery<Video> q = manager.createQuery(
+	        "SELECT v FROM Video v WHERE v.classificacao = :classificacao", Video.class);
+	    q.setParameter("classificacao", valor);
+	    
+	    return q.getResultList();
+	}
+
+	// Quais os vídeos do gênero X (requisito)
+	public List<Video> videosPorGenero(String nome) {
+	    TypedQuery<Video> q = manager.createQuery(
+	        "SELECT v FROM Video v JOIN v.generos g WHERE g.nome = :nome", Video.class);
+	    q.setParameter("nome", nome);
+	    
+	    return q.getResultList();
+	}
+
+	// Quais os vídeos de título X (opcional)
+	public List<Video> videosPorTitulo(String titulo) {
+	    TypedQuery<Video> q = manager.createQuery(
+	        "SELECT v FROM Video v WHERE v.titulo = :titulo", Video.class);
+	    q.setParameter("titulo", titulo);
+	    
+	    return q.getResultList();
+	}
+
+	// Quais os vídeos de link X (opcional)
+	public List<Video> videosPorLink(String link) {
+	    TypedQuery<Video> q = manager.createQuery(
+	        "SELECT v FROM Video v WHERE v.link = :link", Video.class);
+	    q.setParameter("link", link);
+	    
+	    return q.getResultList();
+	}
+
 }
