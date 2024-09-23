@@ -11,8 +11,8 @@
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" 	value="org.postgresql.Driver" />
 			<property name="jakarta.persistence.jdbc.url"		value="jdbc:postgresql://localhost:5432/Videoteca" />
-			<property name="jakarta.persistence.jdbc.user"		value="root" />
-			<property name="jakarta.persistence.jdbc.password"	value="root" />
+			<property name="jakarta.persistence.jdbc.user"		value="ifpb" />
+			<property name="jakarta.persistence.jdbc.password"	value="ifpb" />
    			<property name="hibernate.hbm2ddl.auto" 	value="update" />  
    			<property name="hibernate.generate_statistics" 	value="false" />  
    			<property name="hibernate.format_sql" 		value="false" />

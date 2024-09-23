@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import daodb4o.Util;
+import daojpa.Util;
 import regras_negocio.Fachada;
 
 public class TelaPrincipal extends JFrame {
@@ -69,7 +69,7 @@ public class TelaPrincipal extends JFrame {
         sairButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Util.desconectar(); // Método para fechar o banco de dados
+                    Util.fecharBanco(); // Método para fechar o banco de dados
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 } finally {

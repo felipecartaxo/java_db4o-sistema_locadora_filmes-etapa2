@@ -1,9 +1,12 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
@@ -13,10 +16,12 @@ public class Genero {
 	// Atributos
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String nome;
 	
 	@ManyToMany(mappedBy="generos", cascade= {CascadeType.PERSIST, CascadeType.ALL})
-	private ArrayList<Video> videos = new ArrayList<>(); // Um gênero pode estar relacionado com um ou mais vídeos
+	private List<Video> videos = new ArrayList<>(); // Um gênero pode estar relacionado com um ou mais vídeos
 	
 	// Construtor padrão
 	public Genero() {
@@ -37,7 +42,7 @@ public class Genero {
 	}
 
 	// Retorna a lista de vídeos
-	public ArrayList<Video> getVideos() {
+	public List<Video> getVideos() {
 		return videos;
 	}
 	

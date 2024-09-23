@@ -8,7 +8,7 @@ public class Alterar {
 		Fachada.inicializar();
 		// Alteração 1
 		try {
-			Fachada.alterarTituloDoVideo("Video1", "Blade Runner");
+			Fachada.alterarTituloDoVideo("Elementos", "aaa");
 			System.out.println("alterado nome Video1 para Blade Runner");
 		}
 		catch (Exception e) {
@@ -17,7 +17,7 @@ public class Alterar {
 		
 		// Alteração 2
 		try {
-			Fachada.alterarClassificacaoDoVideo("Video2", 4);;
+			Fachada.alterarClassificacaoDoVideo("Coraline", 1);;
 			System.out.println("alterado classificacao do Video2 para 4");
 		}
 		catch (Exception e) {
