@@ -2,13 +2,28 @@ package modelo;
 
 import java.util.ArrayList;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+@Entity // Indica que a classe Video é uma entidade do banco
 public class Video {
 	
 	// Atributos
+	
+	// Indica que o atributo id será a chave primária e o mesmo será gerado automaticamente pelo JPA
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id; // Gerado automaticamente no DAOVideo
 	private String titulo;
 	private String link;
 	private int classificacao; // De 1 a 5
+	
+	// Indica que o relacionamento com a classe Genero é muitos para muitos, mas que a classe Video é o lado dominante
+	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.ALL})
 	private ArrayList<Genero> generos = new ArrayList<>(); // Um vídeo possui um ou mais gêneros
 	
 	// Construtor padrão
@@ -80,14 +95,6 @@ public class Video {
 	public void removerGenero (Genero genero) {
 		generos.remove(genero);
 	}
-	
-	// Localiza um gênero
-	/*
-	 * public Genero localizarGenero (String genero) { for (Genero g : generos) {
-	 * if(g.getNome().equals(genero)) { return g; } }
-	 * 
-	 * return null; }
-	 */
 	
 	// toString
 	@Override

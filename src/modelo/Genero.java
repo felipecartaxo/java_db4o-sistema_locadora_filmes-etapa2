@@ -2,14 +2,24 @@ package modelo;
 
 import java.util.ArrayList;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+
+@Entity // Indica que a classe Genero é uma entidade do banco
 public class Genero {
 	
 	// Atributos
+	
+	@Id
 	private String nome;
+	
+	@ManyToMany(mappedBy="generos", cascade= {CascadeType.PERSIST, CascadeType.ALL})
 	private ArrayList<Video> videos = new ArrayList<>(); // Um gênero pode estar relacionado com um ou mais vídeos
 	
 	// Construtor padrão
-	public Genero() {	
+	public Genero() {
 	}
 	
 	// Construtor com argumentos
