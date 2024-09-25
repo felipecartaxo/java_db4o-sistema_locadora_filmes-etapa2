@@ -20,7 +20,7 @@ public class TelaPrincipal extends JFrame {
 
         // Painel principal
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1)); // Ajuste o número de linhas
+        panel.setLayout(new GridLayout(4, 1));
 
         // Botão para abrir a Tela de Vídeos
         JButton videoButton = new JButton("Gerenciar Vídeos");

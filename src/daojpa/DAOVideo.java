@@ -67,5 +67,4 @@ public class DAOVideo extends DAO<Video> {
 	    
 	    return q.getResultList();
 	}
-
 }

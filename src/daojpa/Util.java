@@ -23,30 +23,24 @@ public class Util {
 				dados.load(Util.class.getResourceAsStream("/daojpa/util.properties")); // dentro de src
 				String sgbd = dados.getProperty("sgbd");
 				String banco = dados.getProperty("banco");
-				String ip = dados.getProperty("ip1"); // ip1 ou ip2 ou ip3
+				String ip = dados.getProperty("ip1"); // Estamos setando, manualmente, como localhost lá no arquivo util.properties, mas poderia ser um ip
 				logger.info("sgbd => " + sgbd);
 				logger.info("banco => " + banco);
 				logger.info("ip => " + ip);
 
-				// alterar propriedades do persistence.xml
+				// Alterar propriedades do persistence.xml
 				Properties configuracoes = new Properties();
 				if (sgbd.equals("postgresql")) {
 					logger.info("----configurando postgresql");
 					configuracoes.setProperty("jakarta.persistence.jdbc.driver", "org.postgresql.Driver");
 					configuracoes.setProperty("jakarta.persistence.jdbc.url",
 							"jdbc:postgresql://" + ip + ":5432/" + banco);
+					
+					// ---------------------------- Altere aqui as credenciais de acesso do banco ---------------------------- 
 					configuracoes.setProperty("jakarta.persistence.jdbc.user", "root");
 					configuracoes.setProperty("jakarta.persistence.jdbc.password", "root");
 				}
-				/*
-				 * if (sgbd.equals("mysql")) { logger.info("----configurando mysql");
-				 * configuracoes.setProperty("jakarta.persistence.jdbc.driver",
-				 * "com.mysql.cj.jdbc.Driver");
-				 * configuracoes.setProperty("jakarta.persistence.jdbc.url", "jdbc:mysql://" +
-				 * ip + ":3306/" + banco + "?createDatabaseIfNotExist=true");
-				 * configuracoes.setProperty("jakarta.persistence.jdbc.user", "root");
-				 * configuracoes.setProperty("jakarta.persistence.jdbc.password", ""); }
-				 */
+				
 				// -----------------------------------------------------------------------------------
 				String unit_name = "hibernate" + "-" + sgbd;
 				factory = Persistence.createEntityManagerFactory(unit_name, configuracoes);

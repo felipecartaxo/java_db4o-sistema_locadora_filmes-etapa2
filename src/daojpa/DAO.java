@@ -68,8 +68,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 
 	}
 
-
-	//----------------------- TRANSACAO   ----------------------
+	// ------------------------ transação   ------------------------
 	public static void begin(){
 		if(!manager.getTransaction().isActive())
 			manager.getTransaction().begin();
@@ -77,7 +76,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 	public static void commit(){
 		if(manager.getTransaction().isActive()){
 			manager.getTransaction().commit();
-			manager.clear();		// ---- esvazia o cache de objetos, se habilitado ----
+			manager.clear(); // Esvazia o cache de objetos, se habilitado
 		}
 	}
 	public static void rollback(){
@@ -85,7 +84,7 @@ public abstract class DAO<T> implements DAOInterface<T> {
 			manager.getTransaction().rollback();
 	}
 
-	// acesso direto a classe de conexão jdbc
+	// Acesso direto a classe de conexão JDBC
 	public static Connection getConnectionJdbc() {
 		try {
 			EntityManagerFactory factory = manager.getEntityManagerFactory();

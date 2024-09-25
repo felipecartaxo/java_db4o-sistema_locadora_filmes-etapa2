@@ -32,7 +32,7 @@ public class DAOGenero extends DAO<Genero> {
 	
 	// ---------- Consultas ----------
 
-	// Quais os gêneros que têm um nome específico (opcional)
+	// Quais os gêneros que têm um nome específico
 	public List<Genero> generosPorNome(String nome) {
 	    TypedQuery<Genero> q = manager.createQuery(
 	        "SELECT g FROM Genero g WHERE g.nome = :nome", Genero.class);

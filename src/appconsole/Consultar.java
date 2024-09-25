@@ -26,8 +26,8 @@ public class Consultar {
 			 for(Video video : Fachada.videosPorTitulo("Coraline"))
 				 System.out.println(video);
 			 
-			 System.out.println("\n===== Videos com o link divertidamente.com: =====");
-			 for(Video video : Fachada.videosPorLink("divertidamente.com"))
+			 System.out.println("\n===== Retorna um filme a partir do seu link: =====");
+			 for(Video video : Fachada.videosPorLink("https://www.youtube.com/watch?v=yRUAzGQ3nSY"))
 				 System.out.println(video);
 			 
 			 System.out.println("\n===== Gêneros com mais de 1 vídeo: =====");
